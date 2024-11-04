@@ -22,6 +22,3 @@ scalar lusgsOmegaVib =
 
 bool LTS = 
     lusgsDict.lookupOrDefault("localTimestepping", false);
-
-bool turbOnFinalIterOnly =
-    lusgsDict.lookupOrDefault<Switch>("turbOnFinalIterOnly", true);
