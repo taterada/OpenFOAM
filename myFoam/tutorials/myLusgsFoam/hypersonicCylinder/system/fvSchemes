@@ -1,0 +1,86 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.1.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// dbnsFlux hllcLMFlux;
+// dbnsFlux roeFlux;
+// dbnsFlux AUSMplusUpFlux;
+// dbnsFlux rusanovFlux;
+
+dbnsFlux AUSMplusMFlux;
+
+/*rotatedFluxCoeffs
+{
+  epsilon 1.e-2;
+  diffusiveFlux rusanovFlux;
+  lowDiffusionFlux roeFlux;
+}*/
+
+
+ddtSchemes
+{
+    default         Euler;
+}
+
+gradSchemes
+{
+    default         Gauss linear;
+    limitedCubicLSQ cellLimited<cubic> 1.5 leastSquares 1;
+    grad(U)         Gauss linear;
+    grad(h)         Gauss linear;
+}
+
+divSchemes
+{
+    default             none;
+    div(devRhoReff)     Gauss linear;
+    div((devRhoReff&U)) Gauss linear;
+
+    div((muEff*dev2(grad(U).T()))) Gauss linear;
+}
+
+laplacianSchemes
+{
+    default         Gauss linear corrected;
+}
+
+interpolationSchemes
+{
+    default         linear;
+    reconstruct(p)  linearUpwind  limitedCubicLSQ;
+    reconstruct(U)  linearUpwindV  limitedCubicLSQ;
+    reconstruct(T)  linearUpwind  limitedCubicLSQ;
+}
+
+snGradSchemes
+{
+    default         corrected;
+}
+
+fluxRequired
+{
+    default         no;
+}
+
+wallDist
+{
+    method meshWave;
+}
+
+relaxationFactors
+{}
+
+// ************************************************************************* //

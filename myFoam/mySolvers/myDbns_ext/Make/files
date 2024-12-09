@@ -1,0 +1,9 @@
+dbnsFlux/dbnsFlux.C
+dbnsFlux/AUSMplusMFlux/AUSMplusMFlux.C
+
+
+numericFlux/numericFlux.C
+
+bound/boundMinMax.C
+
+LIB = $(FOAM_USER_LIBBIN)/libmyDbns_ext
