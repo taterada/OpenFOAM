@@ -1,3 +1,0 @@
-hyLusgsFoam.C
-
-EXE = $(FOAM_USER_APPBIN)/hyLusgsFoam

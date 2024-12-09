@@ -1,8 +1,0 @@
-dbnsFlux/dbnsFlux.C
-dbnsFlux/hllcLMFlux/hllcLMFlux.C
-
-numericFlux/numericFlux.C
-
-bound/boundMinMax.C
-
-LIB = $(FOAM_USER_LIBBIN)/libhyDbns
